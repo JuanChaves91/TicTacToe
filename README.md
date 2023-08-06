@@ -1,2 +1,2 @@
 # TicTacToe
-Tic Tac Toe game made with C#
+Tic Tac Toe game made with C# (console app)
