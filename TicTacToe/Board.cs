@@ -86,8 +86,9 @@
             }
             else
             {
+                Console.Write("\n");
                 Console.WriteLine("Sorry the cell {0} is already marked with {1}", choice, arr[choice]);
-                Console.WriteLine("\n");
+                //Console.Write("\n");
                 Console.WriteLine("Please wait 2 seconds, board is loading again.....");
                 Thread.Sleep(2000);
             }

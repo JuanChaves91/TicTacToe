@@ -4,32 +4,49 @@
     {
         static int choice;
         static char mark;
+        static int flag;
 
         public static void Main(string[] args)
         {
             Board board = new Board();
 
-            Console.WriteLine("TIC-TAC-TOE");
-            Console.WriteLine("Player 1: X | Player 2: O\n");
-
-            if(board.GetTurn() % 2 != 0)
+            do
             {
-                Console.WriteLine("Player 1 turn\n");
-                mark = 'X';
+                Console.Clear();
+                Console.WriteLine("TIC-TAC-TOE");
+                Console.WriteLine("Player 1: X | Player 2: O\n");
+                board.Show();
+                //Console.WriteLine("\n");
+                if(board.GetTurn() % 2 != 0)
+                {
+                    Console.WriteLine("\nPlayer 1 turn");
+                    mark = 'X';
+                }
+                else
+                {
+                    Console.WriteLine("\nPlayer 2 turn");
+                    mark = 'O';
+                }
+                Console.Write("Your choice?: ");
+                choice = int.Parse(Console.ReadLine());
+                board.SetChoice(choice, mark);
+                flag = board.CheckWin();
+            }
+            while(flag  != 1 && flag != -1);
+
+            Console.Clear();
+            if(flag == 1)
+            {
+                Console.WriteLine("Player {0} has won!", (board.GetTurn() % 2) + 1);
             }
             else
             {
-                Console.WriteLine("Player 2 turn\n");
-                mark = 'O';
+                Console.WriteLine("Draw");
             }
-
+            Console.Write("\n");
             board.Show();
-            Console.WriteLine("\n");
-            Console.WriteLine("Your choice?: ");
-            choice = int.Parse(Console.ReadLine());
-            board.SetChoice(choice, mark);
+            Console.ReadLine();
 
-            board.Show();
         }
     }
 }
